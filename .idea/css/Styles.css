@@ -1,0 +1,301 @@
+/*Grund einstellungen der Schriftgröße und des Gewichts der Schriftartder Website */
+html{font-size: 65.5%;
+    font-weight: 400;
+
+}
+/*farb variablen für die Website zum leichent verändern der Farbgebung der Website*/
+:root{
+    --grundfarbe: rgba(211, 212, 246, .85);
+    --hintergrund: rgba(244, 238, 245, 1);
+    --akzentfarbe: rgb(255, 225, 138);
+    --akzentfarbezwei: rgb(189, 191, 170);
+}
+*,*::before, *::after{
+    box-sizing: border-box;
+}
+/*grundeinstellunen des Website Bodys*/
+body{
+    background-color: #F4EEF5;
+    font-family: Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif;
+    font-size: 2.5rem;
+    margin: auto;
+
+
+
+
+}
+/*Logo bzw name der Website*/
+.logo{
+    margin: 0;
+    padding-right: .3em;
+}
+/*Name der eizlnen Menüpunkte*/
+.name{
+    margin: 0;
+    color: var(--akzentfarbezwei);
+
+    text-align: center;
+    padding-right: .5em;
+    padding-top: .2em;
+
+}
+/*navigation ab hier*/
+
+header{
+    align-items: flex-start;
+    background: var(--grundfarbe);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 900;
+}
+.nav-toggle{
+    display: none;
+}
+
+.nav-toggle-label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+/*implementierung des Burger Menüs*/
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+
+    display: block;
+    background: var(--akzentfarbezwei);
+    width: 1em;
+    height: 3px;
+    border-radius: 2px;
+    position: relative;
+
+}
+/*impementierung des oberen und unteren balken*/
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+    content: '';
+    position: absolute;
+}
+/*unterer balken plazierung im Burger*/
+.nav-toggle-label span::before{
+    bottom: 5px;
+
+}
+/*oberer balken platzierung im Burger*/
+.nav-toggle-label span::after{
+    top: 5px;
+}
+
+
+nav{
+ position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--grundfarbe);
+    width: 100%;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform 200ms ease-in-out;
+
+}
+.nav-toggle:checked ~ nav{
+    transform: scale(1,1);
+}
+.nav-toggle:checked ~ nav a{
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 260ms ;
+
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav li{
+    margin-bottom: 1em;
+    margin-left: 1em;
+    list-style: none;
+
+}
+
+nav a{
+    color: brown;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+
+}
+nav a:hover {
+
+    color: var(--akzentfarbezwei);
+
+
+}
+
+/*full screan navigation*/
+@media screen and (min-width: 950px) {
+    .nav-toggle-label{
+        opacity: 0;
+    }
+
+    header{
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 1fr) ;
+    }
+    .logo {
+        grid-column: 1 /2;
+
+    }
+    .name {
+        grid-column: 2/3;
+    }
+    nav {
+        /*edge support*/
+        position: relative;
+        text-align: left;
+        transition: none;
+        transform: scale(1,1);
+        background: none;
+        top: initial;
+        left: initial;
+
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    nav a{
+        opacity: 1;
+        position: relative;
+    }
+    nav ul{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1em;
+
+    }
+    nav li{
+        margin-left: 1em;
+        margin-bottom: .4em;
+
+    }
+
+
+    nav a::before{
+        content: '';
+        display: block;
+        height: 7px;
+        background:  var(--hintergrund);
+        position: absolute;
+        bottom: -.75em;
+        left: 0;
+        right: 0;
+        transform: scale(0, 1);
+        transform-origin: left;
+        transition: transform ease-in-out 250ms ;
+    }
+
+    nav a:hover::before{
+        transform: scale(1,1);
+    }
+}
+
+.content{
+    padding-top: 12rem;
+    display: grid;
+    grid-template-columns: 2fr, 1fr;
+    grid-auto-rows: minmax( auto);
+    grid-gap: 1rem;
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    ;
+    height: auto;
+    background: var(--hintergrund);
+    background-size: cover;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-bottom: 5rem;
+    z-index: 50;
+
+}
+/*einstellungen der body Container */
+.container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    max-width: 45ch;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    color: var(--akzentfarbe);
+    background: var(--akzentfarbezwei);
+    background-clip: padding-box;
+    border: solid 1em transparent;
+    border-radius: 7rem;
+}
+/* bilder an die Rahmen anpassen*/
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+    object-fit: cover;
+}
+/*Gradient effect an den body Contaier*/
+.container::after {
+
+    content: '';
+    position: absolute;
+    /*display: block;*/
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+    margin: -10px;
+    border-radius: 5rem;
+    background: linear-gradient(to right, #FFE18A, #D3D4F6);
+
+    /*Plazierung der eizelnen Container im Grid*/
+}
+.container-eins{
+    grid-column: 1/3;
+}
+
+.container-zwei{
+    grid-row: 2;
+    grid-column: 1/3;
+
+}
+.container-drei{
+
+}
+.container-vier{}
+
+
+
+
+
+/*fußzeilen einstellungen*/
+footer{
+    clear: both;
+    z-index: 101;
+
+    width: 100%;
+    background: var(--grundfarbe);
+    padding: .5rem ;
+    text-align: center;
+
+    alignment: bottom;
+}
+
